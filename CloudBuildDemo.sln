@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31205.134
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudBuildDemo", "CloudBuildDemo\CloudBuildDemo.csproj", "{393DEB87-C414-4712-8997-46C3D420D197}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{393DEB87-C414-4712-8997-46C3D420D197}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{393DEB87-C414-4712-8997-46C3D420D197}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{393DEB87-C414-4712-8997-46C3D420D197}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{393DEB87-C414-4712-8997-46C3D420D197}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6C55F6F8-E368-4613-8692-8409ABB0B0AB}
+	EndGlobalSection
+EndGlobal
