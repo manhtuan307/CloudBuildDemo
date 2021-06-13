@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using NLog;
 using System;
@@ -10,15 +11,20 @@ namespace CloudBuildDemo
         public static void Main(string[] args) {
             try
             {
+                var apiHost = CreateHostBuilder(args).Build();
+                var env = apiHost.Services.GetRequiredService<IWebHostEnvironment>();
+
+                var environmentName = env.EnvironmentName;
+
                 // Configure nlog to use Google Stackdriver logging from the XML configuration file.
                 LogManager.LoadConfiguration("nlog.xml");
 
                 // Acquire a logger for this class
                 var logger = LogManager.GetCurrentClassLogger();
                 // Log some information. This log entry will be sent to Google Stackdriver Logging.
-                logger.Info("[START] Demo! Hello everybody");
+                logger.Info($"[START] Demo! Hello everybody. Environment Name is: {environmentName}");
 
-                CreateHostBuilder(args).Build().Run();
+                apiHost.Run();
             }
             catch (Exception ex)
             {
