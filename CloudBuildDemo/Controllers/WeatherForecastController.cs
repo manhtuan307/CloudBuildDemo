@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using NLog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace CloudBuildDemo.Controllers
 {
@@ -11,6 +11,8 @@ namespace CloudBuildDemo.Controllers
     [Route("[controller]")]
     public class WeatherForecastController : ControllerBase
     {
+        private static readonly NLog.ILogger logger = LogManager.GetCurrentClassLogger();
+
         private static readonly string[] Summaries = new[]
         {
             "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
@@ -24,6 +26,9 @@ namespace CloudBuildDemo.Controllers
 
         [HttpGet]
         public IEnumerable<WeatherForecast> Get() {
+
+            logger.Info("Hello. Execute a method GET - Show many data");
+
             var rng = new Random();
             return Enumerable.Range(1, 8).Select(index => new WeatherForecast {
                 Date = DateTime.Now.AddDays(index),

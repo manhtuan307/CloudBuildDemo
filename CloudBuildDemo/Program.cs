@@ -1,18 +1,37 @@
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
+using NLog;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace CloudBuildDemo
 {
     public class Program
     {
         public static void Main(string[] args) {
-            CreateHostBuilder(args).Build().Run();
+            try
+            {
+                // Configure nlog to use Google Stackdriver logging from the XML configuration file.
+                LogManager.LoadConfiguration("nlog.xml");
+
+                // Acquire a logger for this class
+                var logger = LogManager.GetCurrentClassLogger();
+                // Log some information. This log entry will be sent to Google Stackdriver Logging.
+                logger.Info("[START] Demo! Hello everybody");
+
+                CreateHostBuilder(args).Build().Run();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+            finally
+            {
+                Console.WriteLine("[END] Demo");
+
+                // Flush buffered log entries before program exit; then shutdown the logger before program exit.
+                LogManager.Flush(TimeSpan.FromSeconds(15));
+                LogManager.Shutdown();
+            }
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) {
