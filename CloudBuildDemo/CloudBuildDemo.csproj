@@ -5,6 +5,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Configuration\nlog.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Configuration\nlog.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Google.Cloud.Logging.NLog" Version="3.3.0" />
     <PackageReference Include="NLog" Version="4.7.10" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
