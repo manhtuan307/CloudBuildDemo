@@ -17,7 +17,7 @@ namespace CloudBuildDemo
                 var environmentName = env.EnvironmentName;
 
                 // Configure nlog to use Google Stackdriver logging from the XML configuration file.
-                LogManager.LoadConfiguration("Configuration/nlog.xml");
+                LogManager.LoadConfiguration("Configuration/nlog.config");
 
                 // Acquire a logger for this class
                 var logger = LogManager.GetCurrentClassLogger();
